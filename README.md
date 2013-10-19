@@ -71,6 +71,25 @@ UITextField *aTextField;
 }];
 ```    
 
+Remember, you can also use ordinary delegate methods for all methods you don't define as blocks.
+
+In this example, shouldBeginEditing is defined as a block, and didEndEditing is a delegate method
+
+```objective-c
+
+aTextField.delegate = self;
+
+[aTextField setShouldBegindEditingBlock:^BOOL(UITextField *textField) {
+        // do your stuff here
+        return YES;
+    }];
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    // do your stuff here
+}
+```   
+
 ### LICENSE
 
 Copyright (C) 2013 Developed by Håkon Bogen
