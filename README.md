@@ -53,9 +53,23 @@ UITextField *aTextField;
 [aTextField setShouldChangeCharactersInRangeBlock:^BOOL(UITextField *textField, NSRange range, NSString *replacementString) {
         // do your stuff here
         return YES;
-    }];
+}];
 ```
-    
+#### textFieldShouldClear
+
+```objective-c
+[aTextField setShouldClearBlock:^BOOL(UITextField *textField) {
+        // do your stuff here
+        return NO;
+}];
+```
+#### textFieldShouldReturn
+```objective-c
+[aTextField setShouldReturnBlock:^BOOL(UITextField *textField) {
+        // do your stuff here
+        return NO;
+}];
+```    
 
 ### LICENSE
 
