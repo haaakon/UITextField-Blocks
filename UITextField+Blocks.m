@@ -1,5 +1,5 @@
 //
-//  UITextField+blocks.m
+//  UITextField+Blocks.m
 //  UITextFieldBlocks
 //
 //  Created by Håkon Bogen on 19.10.13.
@@ -30,7 +30,7 @@ typedef BOOL (^UITextFieldReturnBlock) (UITextField *textField);
 typedef void (^UITextFieldVoidBlock) (UITextField *textField);
 typedef BOOL (^UITextFieldCharacterChangeBlock) (UITextField *textField, NSRange range, NSString *replacementString);
 
-@implementation UITextField (blocks)
+@implementation UITextField (Blocks)
 
 static const void *UITextFieldDelegateKey                           = &UITextFieldDelegateKey;
 
@@ -78,7 +78,6 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     // return default value just in case
     return YES;
 }
-
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -214,6 +213,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
 {
     return objc_getAssociatedObject(self, UITextFieldShouldReturnKey);
 }
+
 - (void)setShouldReturnBlock:(BOOL (^)(UITextField *))shouldReturnBlock
 {
     [self setDelegateIfNoDelegateSet];
@@ -235,10 +235,12 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
 /*
  Setting itself as delegate if no other delegate has been set. This ensures the UITextField will use blocks if no delegate is set.
  */
-- (void)setDelegateIfNoDelegateSet {
+- (void)setDelegateIfNoDelegateSet
+{
     if (self.delegate != (id<UITextFieldDelegate>)self) {
         objc_setAssociatedObject(self, UITextFieldDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
         self.delegate = (id<UITextFieldDelegate>)self;
     }
 }
+
 @end
