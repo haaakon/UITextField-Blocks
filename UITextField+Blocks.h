@@ -39,8 +39,8 @@
 @property (copy, nonatomic) BOOL (^shouldReturnBlock)(UITextField *textField);
 @property (copy, nonatomic) BOOL (^shouldClearBlock)(UITextField *textField);
 
-- (void)setShouldBegindEditingBlock:(BOOL (^)(UITextField *textField))shouldBegindEditingBlock
-- (void)setShouldEndEditingBlock:(BOOL (^)(UITextField *textField))shouldEndEditingBlock
+- (void)setShouldBegindEditingBlock:(BOOL (^)(UITextField *textField))shouldBegindEditingBlock;
+- (void)setShouldEndEditingBlock:(BOOL (^)(UITextField *textField))shouldEndEditingBlock;
 
 - (void)setDidBeginEditingBlock:(void (^)(UITextField *textField))didBeginEditingBlock;
 - (void)setDidEndEditingBlock:(void (^)(UITextField *textField))didEndEditingBlock;
