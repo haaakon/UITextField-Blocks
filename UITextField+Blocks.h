@@ -1,5 +1,5 @@
 //
-//  UITextField+blocks.h
+//  UITextField+Blocks.h
 //  UITextFieldBlocks
 //
 //  Created by Håkon Bogen on 19.10.13.
@@ -25,8 +25,7 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface UITextField (blocks)
+@interface UITextField (Blocks)
 
 @property (copy, nonatomic) BOOL (^shouldBegindEditingBlock)(UITextField *textField);
 @property (copy, nonatomic) BOOL (^shouldEndEditingBlock)(UITextField *textField);
@@ -45,7 +44,7 @@
 - (void)setDidBeginEditingBlock:(void (^)(UITextField *textField))didBeginEditingBlock;
 - (void)setDidEndEditingBlock:(void (^)(UITextField *textField))didEndEditingBlock;
 
--(void)setShouldChangeCharactersInRangeBlock:(BOOL (^)(UITextField *textField, NSRange range, NSString *string))shouldChangeCharactersInRangeBlock;
+- (void)setShouldChangeCharactersInRangeBlock:(BOOL (^)(UITextField *textField, NSRange range, NSString *string))shouldChangeCharactersInRangeBlock;
 
 - (void)setShouldClearBlock:(BOOL (^)(UITextField *textField))shouldClearBlock;
 - (void)setShouldReturnBlock:(BOOL (^)(UITextField *textField))shouldReturnBlock;
