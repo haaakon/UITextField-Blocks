@@ -108,7 +108,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     }
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacemenText:(NSString *)string
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     UITextFieldCharacterChangeBlock block = textField.shouldChangeCharactersInRangeBlock;
     if (block) {
@@ -137,6 +137,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     }
     return YES;
 }
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     UITextFieldReturnBlock block = textField.shouldReturnBlock;
@@ -151,8 +152,6 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     }
     return YES;
 }
-
-
 
 #pragma mark Block setting/getting methods
 
