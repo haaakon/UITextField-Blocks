@@ -56,7 +56,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     
     id delegate = objc_getAssociatedObject(self, UITextFieldDelegateKey);
     
-    if (delegate && [delegate respondsToSelector:@selector(textFieldShouldBeginEditing:)]) {
+    if ([delegate respondsToSelector:@selector(textFieldShouldBeginEditing:)]) {
        return [delegate textFieldShouldBeginEditing:textField];
     }
     // return default value just in case
@@ -72,7 +72,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     
     id delegate = objc_getAssociatedObject(self, UITextFieldDelegateKey);
     
-    if (delegate && [delegate respondsToSelector:@selector(textFieldShouldEndEditing:)]) {
+    if ([delegate respondsToSelector:@selector(textFieldShouldEndEditing:)]) {
         return [delegate textFieldShouldEndEditing:textField];
     }
     // return default value just in case
@@ -88,7 +88,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     
     id delegate = objc_getAssociatedObject(self, UITextFieldDelegateKey);
     
-    if (delegate && [delegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
+    if ([delegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
         [delegate textFieldDidBeginEditing:textField];
     }
 }
@@ -102,7 +102,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     
     id delegate = objc_getAssociatedObject(self, UITextFieldDelegateKey);
     
-    if (delegate && [delegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
+    if ([delegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
         [delegate textFieldDidBeginEditing:textField];
     }
 }
@@ -116,7 +116,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     
     id delegate = objc_getAssociatedObject(self, UITextFieldDelegateKey);
     
-    if (delegate && [delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)]) {
+    if ([delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)]) {
         return [delegate textField:textField shouldChangeCharactersInRange:range replacementString:string];
     }
     return YES;
@@ -131,7 +131,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     
     id delegate = objc_getAssociatedObject(self, UITextFieldDelegateKey);
     
-    if (delegate && [delegate respondsToSelector:@selector(textFieldShouldClear:)]) {
+    if ([delegate respondsToSelector:@selector(textFieldShouldClear:)]) {
         return [delegate textFieldShouldClear:textField];
     }
     return YES;
@@ -146,7 +146,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     
     id delegate = objc_getAssociatedObject(self, UITextFieldDelegateKey);
     
-    if (delegate && [delegate respondsToSelector:@selector(textFieldShouldReturn:)]) {
+    if ([delegate respondsToSelector:@selector(textFieldShouldReturn:)]) {
         return [delegate textFieldShouldReturn:textField];
     }
     return YES;
@@ -181,6 +181,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     return objc_getAssociatedObject(self, UITextFieldDidBeginEditingKey);
     
 }
+
 - (void)setDidBeginEditingBlock:(void (^)(UITextField *))didBeginEditingBlock
 {
     [self setDelegateIfNoDelegateSet];
@@ -203,7 +204,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     return objc_getAssociatedObject(self, UITextFieldShouldChangeCharactersInRangeKey);
 }
 
--(void)setShouldChangeCharactersInRangeBlock:(BOOL (^)(UITextField *, NSRange, NSString *))shouldChangeCharactersInRangeBlock
+- (void)setShouldChangeCharactersInRangeBlock:(BOOL (^)(UITextField *, NSRange, NSString *))shouldChangeCharactersInRangeBlock
 {
     [self setDelegateIfNoDelegateSet];
     objc_setAssociatedObject(self, UITextFieldShouldChangeCharactersInRangeKey, shouldChangeCharactersInRangeBlock, OBJC_ASSOCIATION_COPY);
