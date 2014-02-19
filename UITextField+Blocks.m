@@ -47,7 +47,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
 
 #pragma mark UITextField Delegate methods
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
++ (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     UITextFieldReturnBlock block = textField.shouldBegindEditingBlock;
     if (block) {
@@ -63,7 +63,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     return YES;
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
++ (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     UITextFieldReturnBlock block = textField.shouldEndEditingBlock;
     if (block) {
@@ -79,7 +79,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
++ (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     UITextFieldVoidBlock block = textField.didBeginEditingBlock;
     if (block) {
@@ -93,7 +93,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     }
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
++ (void)textFieldDidEndEditing:(UITextField *)textField
 {
     UITextFieldVoidBlock block = textField.didEndEditingBlock;
     if (block) {
@@ -107,7 +107,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     }
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
++ (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     UITextFieldCharacterChangeBlock block = textField.shouldChangeCharactersInRangeBlock;
     if (block) {
@@ -122,7 +122,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     return YES;
 }
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField
++ (BOOL)textFieldShouldClear:(UITextField *)textField
 {
     UITextFieldReturnBlock block = textField.shouldClearBlock;
     if (block) {
@@ -137,7 +137,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     return YES;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
++ (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     UITextFieldReturnBlock block = textField.shouldReturnBlock;
     if (block) {
@@ -238,9 +238,9 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
  */
 - (void)setDelegateIfNoDelegateSet
 {
-    if (self.delegate != (id<UITextFieldDelegate>)self) {
+    if (self.delegate != (id<UITextFieldDelegate>)[self class]) {
         objc_setAssociatedObject(self, UITextFieldDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
-        self.delegate = (id<UITextFieldDelegate>)self;
+        self.delegate = (id<UITextFieldDelegate>)[self class];
     }
 }
 
