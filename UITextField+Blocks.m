@@ -103,7 +103,7 @@ static const void *UITextFieldShouldReturnKey                       = &UITextFie
     id delegate = objc_getAssociatedObject(self, UITextFieldDelegateKey);
     
     if ([delegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
-        [delegate textFieldDidBeginEditing:textField];
+        [delegate textFieldDidEndEditing:textField];
     }
 }
 
