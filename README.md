@@ -3,11 +3,36 @@ UITextField-Blocks
 
 Adds blocks to all UITextField delegate methods with a category, no subclassing. Also allows the use of delegate methods if no block is set.
 
+> **Swift projects:** This library is written in Objective-C but works seamlessly in Swift projects via UIKit/Obj-C interoperability. Import the module and use the block-based API directly from Swift.
+
 Installation
 ============
-Simply use [CocoaPods](http://cocoapods.org/):
 
-`pod 'UITextField+Blocks'`
+### Swift Package Manager
+
+Add the following dependency to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/haaakon/UITextField-Blocks.git", from: "1.0.0")
+]
+```
+
+Or add it via Xcode: **File → Add Packages…** and enter the repo URL:
+
+```
+https://github.com/haaakon/UITextField-Blocks.git
+```
+
+### CocoaPods
+
+Add to your `Podfile`:
+
+```ruby
+pod 'UITextField+Blocks'
+```
+
+Then run `pod install`.
 
 USAGE
 =====
